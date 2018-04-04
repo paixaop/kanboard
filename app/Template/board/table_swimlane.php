@@ -20,7 +20,11 @@
         <?php endif ?>
 
         <span title="<?= t('Task count') ?>" class="board-column-header-task-count swimlane-task-count-<?= $swimlane['id'] ?>">
-            (<?= $swimlane['nb_tasks'] ?>)
+            (<?= $swimlane['nb_tasks'] ?>), 
+        </span>
+
+        <span title="<?= t('Task count') ?>" class="board-column-header-task-count swimlane-task-count-<?= $swimlane['id'] ?>">
+             <?= $swimlane['amount'] ?> M
         </span>
     </th>
 </tr>

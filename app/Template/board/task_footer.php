@@ -52,7 +52,7 @@
 
         <?php if (! empty($task['time_estimated']) || ! empty($task['time_spent'])): ?>
             <span class="task-time-estimated" title="<?= t('Time spent and estimated') ?>">
-                <?= $this->text->e($task['time_spent']) ?>/<?= $this->text->e($task['time_estimated']) ?>h
+                <?= $this->text->e($task['time_estimated']) ?>
             </span>
         <?php endif ?>
 

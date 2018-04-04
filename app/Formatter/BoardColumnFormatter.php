@@ -69,6 +69,19 @@ class BoardColumnFormatter extends BaseFormatter implements FormatterInterface
         return $this;
     }
 
+    function sumTasks($column_id)
+    {
+        $sum = 0.0;
+
+        foreach ($this->tasks as $task) {
+            if (isset($task['time_estimated']) && $column_id == $task['column_id'] ) {
+                $sum += (float) $task['time_estimated'];
+            }
+        }
+
+        return $sum;
+    }
+
     /**
      * Apply formatter
      *
@@ -88,6 +101,7 @@ class BoardColumnFormatter extends BaseFormatter implements FormatterInterface
 
             $column['nb_tasks'] = count($column['tasks']);
             $column['score'] = (int) array_column_sum($column['tasks'], 'score');
+            $column['amount'] = $this->sumTasks($column['id']);
         }
 
         return $this->columns;

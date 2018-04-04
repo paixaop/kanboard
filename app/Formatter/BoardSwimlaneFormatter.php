@@ -69,6 +69,19 @@ class BoardSwimlaneFormatter extends BaseFormatter implements FormatterInterface
         return $this;
     }
 
+    function sumTasks($swimlane_id)
+    {
+        $sum = 0.0;
+
+        foreach ($this->tasks as $task) {
+            if (isset($task['time_estimated']) && $task['swimlane_id'] == $swimlane_id) {
+                $sum += (float) $task['time_estimated'];
+            }
+        }
+
+        return $sum;
+    }
+
     /**
      * Apply formatter
      *
@@ -79,7 +92,7 @@ class BoardSwimlaneFormatter extends BaseFormatter implements FormatterInterface
     {
         $nb_swimlanes = count($this->swimlanes);
         $nb_columns = count($this->columns);
-
+        
         foreach ($this->swimlanes as &$swimlane) {
             $swimlane['id'] = (int) $swimlane['id'];
             $swimlane['columns'] = $this->boardColumnFormatter
@@ -89,11 +102,12 @@ class BoardSwimlaneFormatter extends BaseFormatter implements FormatterInterface
                 ->withTags($this->tags)
                 ->format();
 
-            $swimlane['nb_swimlanes'] = $nb_swimlanes;
+            $swimlane['nb_swimlanes'] = $nb_swimlanes; 
             $swimlane['nb_columns'] = $nb_columns;
             $swimlane['nb_tasks'] = array_column_sum($swimlane['columns'], 'nb_tasks');
             $swimlane['score'] = array_column_sum($swimlane['columns'], 'score');
-
+            $swimlane['amount'] = $this->sumTasks($swimlane['id']);
+            
             $this->calculateStatsByColumnAcrossSwimlanes($swimlane['columns']);
         }
 

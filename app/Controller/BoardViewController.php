@@ -54,7 +54,7 @@ class BoardViewController extends BaseController
      *
      * @access public
      */
-    public function show()
+    public function show() 
     {
         $project = $this->getProject();
         $search = $this->helper->projectHeader->getSearchQuery($project);

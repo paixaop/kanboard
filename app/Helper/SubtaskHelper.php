@@ -133,7 +133,7 @@ class SubtaskHelper extends Base
 
         $html = $this->helper->form->label(t('Original estimate'), 'time_estimated');
         $html .= $this->helper->form->numeric('time_estimated', $values, $errors, $attributes);
-        $html .= ' '.t('hours');
+        $html .= ' '.t('M USD');
 
         return $html;
     }
