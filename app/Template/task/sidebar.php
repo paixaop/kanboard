@@ -15,7 +15,7 @@
         <li <?= $this->app->checkMenuSelection('TaskViewController', 'analytics') ?>>
             <?= $this->url->icon('bar-chart', t('Analytics'), 'TaskViewController', 'analytics', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
         </li>
-        <?php if ($task['time_estimated'] > 0 || $task['time_spent'] > 0): ?>
+        <?php if (false && ($task['time_estimated'] > 0 || $task['time_spent'] > 0)): ?>
         <li <?= $this->app->checkMenuSelection('TaskViewController', 'timetracking') ?>>
             <?= $this->url->icon('clock-o', t('Time tracking'), 'TaskViewController', 'timetracking', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
         </li>
@@ -33,9 +33,9 @@
         <li>
             <?= $this->modal->large('edit', t('Edit the task'), 'TaskModificationController', 'edit', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
         </li>
-        <li>
+        <!-- <li>
             <?= $this->modal->medium('refresh fa-rotate-90', t('Edit recurrence'), 'TaskRecurrenceController', 'edit', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
-        </li>
+        </li> -->
         <?php endif ?>
         <li>
             <?= $this->modal->medium('plus', t('Add a sub-task'), 'SubtaskController', 'create', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>

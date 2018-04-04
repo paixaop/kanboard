@@ -67,12 +67,17 @@
                     </span>
                 <?php endif ?>
 
+                <?php if ($swimlane['position'] == 1 && $column['amount'] > 0 ): ?>
+                    <span title="<?= t('Total amount in this column across all swimlanes') ?>">
+                        (<span><?= $column['amount'] ?> M</span>)
+                    </span>
+                <?php endif ?>
+
                 <?php if (! $not_editable && ! empty($column['description'])): ?>
                     <span class="tooltip" title="<?= $this->text->markdownAttribute($column['description']) ?>">
                         &nbsp;<i class="fa fa-info-circle"></i>
                     </span>
                 <?php endif ?>
-
             </span>
 
             <?php if (! empty($column['column_nb_tasks'])): ?>
