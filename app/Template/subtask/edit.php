@@ -8,7 +8,6 @@
     <?= $this->subtask->renderTitleField($values, $errors, array('autofocus')) ?>
     <?= $this->subtask->renderAssigneeField($users_list, $values, $errors) ?>
     <?= $this->subtask->renderTimeEstimatedField($values, $errors) ?>
-    <?= $this->subtask->renderTimeSpentField($values, $errors) ?>
 
     <?= $this->hook->render('template:subtask:form:edit', array('values' => $values, 'errors' => $errors)) ?>
 

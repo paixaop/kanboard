@@ -17,9 +17,19 @@
                         <?php endif ?>
                         </span>
                     </li>
+                    <?php if ($task['time_estimated']): ?>
                     <li>
-                        <strong><?= t('Priority') ?>:</strong> <span><?= $task['priority'] ?></span>
+                        <strong><?= t('Time estimated') ?>:</strong>
+                        <span><?= t('%s M', $task['time_estimated']) ?></span>
                     </li>
+                    <?php endif ?>
+                    <?php if ($task['date_due']): ?> 
+                        <li>
+                            <strong><?= t('Due date') ?>:</strong>
+                            <span><?= $this->dt->justdate($task['date_due']) ?></span>
+                        </li>
+                    <?php endif ?>
+                    
                     <?php if (! empty($task['reference'])): ?>
                         <li>
                             <strong><?= t('Reference') ?>:</strong> <span><?= $this->task->renderReference($task) ?></span>
@@ -92,16 +102,13 @@
                             <span><?= $this->text->e($task['creator_name'] ?: $task['creator_username']) ?></span>
                         </li>
                     <?php endif ?>
-                    <?php if ($task['time_estimated']): ?>
                     <li>
-                        <strong><?= t('Time estimated') ?>:</strong>
-                        <span><?= t('%s hours', $task['time_estimated']) ?></span>
+                        <strong><?= t('Priority') ?>:</strong> <span><?= $task['priority'] ?></span>
                     </li>
-                    <?php endif ?>
                     <?php if ($task['time_spent']): ?>
                     <li>
                         <strong><?= t('Time spent') ?>:</strong>
-                        <span><?= t('%s M USD', $task['time_spent']) ?></span>
+                        <span><?= t('%s M', $task['time_spent']) ?></span>
                     </li>
                     <?php endif ?>
 
@@ -110,12 +117,6 @@
             </div>
             <div class="task-summary-column">
                 <ul class="no-bullet">
-                    <?php if ($task['date_due']): ?>
-                        <li>
-                            <strong><?= t('Due date') ?>:</strong>
-                            <span><?= $this->dt->datetime($task['date_due']) ?></span>
-                        </li>
-                    <?php endif ?>
                     <?php if ($task['date_started']): ?>
                         <li>
                             <strong><?= t('Started') ?>:</strong>

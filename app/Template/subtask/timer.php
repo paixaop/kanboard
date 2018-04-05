@@ -7,7 +7,7 @@
         <strong><?= $this->text->e($subtask['time_estimated']).'h' ?></strong> <?= t('estimated') ?>
     <?php endif ?>
 
-    <?php if ($this->user->hasProjectAccess('SubtaskController', 'edit', $task['project_id']) && $subtask['user_id'] == $this->user->getId()): ?>
+    <?php if (false && $this->user->hasProjectAccess('SubtaskController', 'edit', $task['project_id']) && $subtask['user_id'] == $this->user->getId()): ?>
         <?= $this->subtask->renderTimer($task, $subtask) ?>
     <?php endif ?>
 </span>

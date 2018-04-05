@@ -259,7 +259,7 @@ class SubtaskTimeTrackingModel extends Base
     public function updateTaskTimeTracking($task_id)
     {
         $values = $this->calculateSubtaskTime($task_id);
-
+        
         return $this->db
                     ->table(TaskModel::TABLE)
                     ->eq('id', $task_id)
@@ -279,8 +279,8 @@ class SubtaskTimeTrackingModel extends Base
                     ->table(SubtaskModel::TABLE)
                     ->eq('task_id', $task_id)
                     ->columns(
-                        'SUM(time_spent) AS time_spent',
-                        'SUM(time_estimated) AS time_estimated'
+                        'SUM(time_spent) AS time_spent' //, SALES
+                        // 'SUM(time_estimated) AS time_estimated'
                     )
                     ->findOne();
     }

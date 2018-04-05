@@ -19,7 +19,7 @@
 
     <?php if (! empty($task['time_estimated']) || ! empty($task['time_spent'])): ?>
         <span class="task-time-estimated" title="<?= t('Time spent and estimated') ?>">
-            <?= $this->text->e($task['time_spent']) ?>/<?= $this->text->e($task['time_estimated']) ?>h
+            <?= $this->text->e($task['time_estimated']) ?> M
         </span>
     <?php endif ?>
 
@@ -39,7 +39,7 @@
             <?php endif ?>
             ">
             <i class="fa fa-calendar"></i>
-            <?= $this->dt->datetime($task['date_due']) ?>
+            <?= $this->dt->justdate($task['date_due']) ?>
         </span>
     <?php endif ?>
 

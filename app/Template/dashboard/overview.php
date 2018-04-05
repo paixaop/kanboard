@@ -33,9 +33,10 @@
                     <?php endif ?>
                 </div>
                 <div class="table-list-details">
-                    <?php foreach ($project['columns'] as $column): ?>
-                        <strong title="<?= t('Task count') ?>"><?= $column['nb_open_tasks'] ?></strong>
-                        <small><?= $this->text->e($column['title']) ?></small>
+                    <?php $i = 0; foreach ($project['columns'] as $column): ?>
+                        <?= $this->text->e($column['title']) ?>
+                        <strong title="<?= t('Task count') ?>">
+                        <?php $column['amount'] > 0? $column['amount'].' ' : '0 ' ?></strong>
                     <?php endforeach ?>
                 </div>
             </div>

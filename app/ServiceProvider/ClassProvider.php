@@ -180,7 +180,7 @@ class ClassProvider implements ServiceProviderInterface
         };
 
         $container['cspRules'] = array(
-            'default-src' => "'self'",
+            'default-src' => "'self' https://reports.zoho.com",
             'style-src' => "'self' 'unsafe-inline'",
             'img-src' => '* data:',
         );

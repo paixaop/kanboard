@@ -130,9 +130,10 @@ class ColumnModel extends Base
     public function getAllWithTaskCount($project_id)
     {
         return $this->db->table(self::TABLE)
-            ->columns('id', 'title', 'position', 'task_limit', 'description', 'hide_in_dashboard', 'project_id')
+            ->columns('id', 'title', 'position', 'task_limit', 'description', 'hide_in_dashboard', 'project_id', 'time_estimated')
             ->subquery("SELECT COUNT(*) FROM ".TaskModel::TABLE." WHERE column_id=".self::TABLE.".id AND is_active='1'", 'nb_open_tasks')
             ->subquery("SELECT COUNT(*) FROM ".TaskModel::TABLE." WHERE column_id=".self::TABLE.".id AND is_active='0'", 'nb_closed_tasks')
+            ->subquery("SELECT SUM(time_estimated) FROM ".TaskModel::TABLE." WHERE column_id=".self::TABLE.".id AND is_active='1'", 'amount')
             ->eq('project_id', $project_id)
             ->asc('position')
             ->findAll();

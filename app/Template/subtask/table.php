@@ -8,7 +8,7 @@
             <th class="column-45"><?= t('Title') ?></th>
             <th class="column-15"><?= t('Assignee') ?></th>
             <?= $this->hook->render('template:subtask:table:header:before-timetracking') ?>
-            <th><?= t('Time tracking') ?></th>
+            <!-- SALES <th><?= t('Time tracking') ?></th> -->
         </tr>
     </thead>
     <tbody>
@@ -32,12 +32,14 @@
                 <?php endif ?>
             </td>
             <?= $this->hook->render('template:subtask:table:rows', array('subtask' => $subtask)) ?>
+            <!-- SALES
             <td>
                 <?= $this->render('subtask/timer', array(
                     'task'    => $task,
                     'subtask' => $subtask,
                 )) ?>
             </td>
+            -->
         </tr>
         <?php endforeach ?>
     </tbody>

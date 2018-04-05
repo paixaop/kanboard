@@ -237,7 +237,7 @@ class SubtaskModel extends Base
 
         if ($result) {
             $subtask = $this->getById($values['id']);
-            $this->subtaskTimeTrackingModel->updateTaskTimeTracking($subtask['task_id']);
+            //$this->subtaskTimeTrackingModel->updateTaskTimeTracking($subtask['task_id']);
 
             if ($fireEvent) {
                 $this->queueManager->push($this->subtaskEventJob->withParams($subtask['id'], self::EVENT_UPDATE, $values));

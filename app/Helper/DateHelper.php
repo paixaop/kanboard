@@ -58,6 +58,18 @@ class DateHelper extends Base
     }
 
     /**
+     * Get formatted  date
+     *
+     * @access public
+     * @param  integer $value
+     * @return string
+     */
+    public function justdate($value)
+    {
+        return preg_replace('/\d+:\d+$/','',date($this->dateParser->getUserDateTimeFormat(), $value));
+    }
+
+    /**
      * Get duration in seconds into human format
      *
      * @access public

@@ -2,16 +2,19 @@
     <a href="#" class="dropdown-menu dropdown-menu-link-icon"><strong><?= t('Sort') ?> <i class="fa fa-caret-down"></i></strong></a>
     <ul>
         <li>
-            <?= $paginator->order(t('Task ID'), \Kanboard\Model\TaskModel::TABLE.'.id') ?>
+            <?= $paginator->order(t('Time estimated'), \Kanboard\Model\TaskModel::TABLE.'.time_estimated') ?>
+        </li>
+        <li>
+            <?= $paginator->order(t('Due date'), \Kanboard\Model\TaskModel::TABLE.'.date_due') ?>
         </li>
         <li>
             <?= $paginator->order(t('Swimlane'), 'swimlane_name') ?>
         </li>
         <li>
-            <?= $paginator->order(t('Column'), 'column_name') ?>
+            <?= $paginator->order(t('Category'), 'category_name') ?>
         </li>
         <li>
-            <?= $paginator->order(t('Category'), 'category_name') ?>
+            <?= $paginator->order(t('Column'), 'column_name') ?>
         </li>
         <li>
             <?= $paginator->order(t('Priority'), \Kanboard\Model\TaskModel::TABLE.'.priority') ?>
@@ -24,9 +27,6 @@
         </li>
         <li>
             <?= $paginator->order(t('Assignee'), 'assignee_name') ?>
-        </li>
-        <li>
-            <?= $paginator->order(t('Due date'), \Kanboard\Model\TaskModel::TABLE.'.date_due') ?>
         </li>
         <li>
             <?= $paginator->order(t('Start date'), \Kanboard\Model\TaskModel::TABLE.'.date_started') ?>
